@@ -16,13 +16,6 @@ function Header({ facade, loggedIn, logout }) {
           </NavLink>
         </li>
       )}
-      {facade.hasUserAccess("user", loggedIn) && (
-        <li>
-          <NavLink exact activeClassName="selected" to="/boats">
-            Boats
-          </NavLink>
-        </li>
-      )}
       {facade.hasUserAccess("admin", loggedIn) && (
         <li>
           <NavLink exact activeClassName="selected" to="/adminpage">

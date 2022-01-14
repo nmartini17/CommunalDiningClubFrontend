@@ -36,7 +36,6 @@ export default function App({ facade }) {
             <Route path="/events">
               <Events />
             </Route>
-            <Route path="/boats"></Route>
             <Route path="/adminpage">
               <AdminPage facade={facade} />
             </Route>
