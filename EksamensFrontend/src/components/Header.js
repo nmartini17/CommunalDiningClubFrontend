@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import facade from "../apiFacade";
+import { NavLink } from "react-router-dom";
 
 function Header({ facade, loggedIn, logout }) {
   return (
@@ -10,8 +11,8 @@ function Header({ facade, loggedIn, logout }) {
       </li>
       {facade.hasUserAccess("user", loggedIn) && (
         <li>
-          <NavLink exact activeClassName="selected" to="/owners">
-            Owners
+          <NavLink exact activeClassName="selected" to="/events">
+            All Events
           </NavLink>
         </li>
       )}

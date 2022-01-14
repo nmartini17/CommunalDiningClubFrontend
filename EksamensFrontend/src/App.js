@@ -5,8 +5,7 @@ import Header from "./components/Header";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import AdminPage from "./components/AdminPage";
-import Owners from "./components/Owners";
-import Boats from "./components/Boats";
+import Events from "./components/Events";
 
 export default function App({ facade }) {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,12 +33,10 @@ export default function App({ facade }) {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/owners">
-              <Owners />
+            <Route path="/events">
+              <Events />
             </Route>
-            <Route path="/boats">
-              <Boats />
-            </Route>
+            <Route path="/boats"></Route>
             <Route path="/adminpage">
               <AdminPage facade={facade} />
             </Route>
@@ -72,8 +69,11 @@ export default function App({ facade }) {
 
 function Home() {
   return (
-    <div>
-      <h1>Welcome to website</h1>
+    <div className="container-md">
+      <div className="col-sm-4 ">
+        <h1>Communal Dining Club</h1>
+        <h2>Login as admin to get started.</h2>
+      </div>
     </div>
   );
 }

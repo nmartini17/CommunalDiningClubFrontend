@@ -72,28 +72,32 @@ function apiFacade() {
     return fetch(URL + "/api/info/" + options).then(handleHttpErrors);
   };
 
-  const postData = (id, link1, link2) => {
-    const options = makeOptions("POST", true, {
-      id: id.id,
-      linkList: [
-        { link: link1, exchange: "kraken" },
-        { link: link2, exchange: "yobit" },
-      ],
-    });
-    return fetch(URL + "/api/admin/", options).then(handleHttpErrors);
+  const deleteEvent = (id) => {
+    const options = makeOptions("DELETE", true); //True add's the token
+    return fetch(URL + "/api/dinnerevent/delete/" + id, options).then(
+      handleHttpErrors
+    );
   };
 
-  const postUserCrypto = (user, cryptoid, count) => {
+  const postEvent = (time, location, dish, price) => {
     const options = makeOptions("POST", true, {
-      userCryptoDTOList: [
-        {
-          userDTO: { userName: user },
-          cryptoValutaDTO: { id: cryptoid },
-          count: count,
-        },
-      ],
+      time: time,
+      location: location,
+      dish: dish,
+      price: price,
     });
-    return fetch(URL + "/api/crypto/portfolio", options).then(handleHttpErrors);
+    return fetch(URL + "/api/dinnerevent/", options).then(handleHttpErrors);
+  };
+
+  const postCreateMember = (address, phone, email, bdayyear, account) => {
+    const options = makeOptions("POST", true, {
+      address: address,
+      phone: phone,
+      email: email,
+      bdayyear: bdayyear,
+      account: account,
+    });
+    return fetch(URL + "/api/member/create/", options).then(handleHttpErrors);
   };
 
   const fetchLoggedIn = (endpoint, updateAction) => {
@@ -139,10 +143,11 @@ function apiFacade() {
     hasUserAccess,
     signupData,
     signup,
-    postData,
-    postUserCrypto,
+    deleteEvent,
+    postEvent,
     setUsername,
     getUsername,
+    postCreateMember,
   };
 }
 const facade = apiFacade();
